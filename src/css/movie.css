@@ -1,0 +1,17 @@
+.img-container {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.img-container > img {
+  width: 100%;
+  height: 400%;
+  filter: grayscale(1);
+  transition: scale 750ms ease-out, filter 250ms ease-in-out;
+}
+
+.img-container:hover > img {
+  scale: 1.15;
+  filter: grayscale(0);
+}

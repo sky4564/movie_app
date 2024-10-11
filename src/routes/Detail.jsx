@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "../components/Movie";
+import '../css/detail.css'
 
 export default function Detail() {
   const [loading, setLoading] = useState(true)
@@ -14,8 +15,6 @@ export default function Detail() {
         `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
       )
     ).json();
-    console.log(json.data)
-    console.log(json.data.movie)
     setMovie(json.data.movie)
     setLoading(false)
   };
@@ -29,20 +28,29 @@ export default function Detail() {
     loading ? <div>is loading . . .</div>
       :
       <>
-        <Movie
-          id={movie.id}
-          coverImg={movie.medium_cover_image}
-          title={movie.title}
-          summary={movie.summary}
-          genres={movie.genres}
-        ></Movie>
-        <Movie
-          id={movie.id}
-          coverImg={movie.medium_cover_image}
-          title={movie.title}
-          summary={movie.summary}
-          genres={movie.genres}
-        ></Movie>
+
+        <div className="card">
+          <div className="card-content">
+            <div className="card-front">
+              <Movie
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                summary={movie.summary}
+                genres={movie.genres}
+              ></Movie>
+            </div>
+            <div className="card-front">
+              <Movie
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                summary={movie.summary}
+                genres={movie.genres}
+              ></Movie>
+            </div>
+          </div>
+        </div>
       </>
   )
 }
