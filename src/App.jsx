@@ -6,15 +6,11 @@ const PUBLC_URL = import.meta.env.VITE_PUBLC_URL
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={PUBLC_URL}>
       <Routes>
         <Route path="/hello" element={<h1>Hello</h1>} />
-
         <Route path="/movie/:id" element={<Detail />} />
         <Route path="/" element={<Home />} />
-
-        <Route path={`${PUBLC_URL}/movie/:id`} element={<Detail />} />
-        <Route path={`${PUBLC_URL}/`} element={< Home />} />
       </Routes>
     </BrowserRouter>
   );
