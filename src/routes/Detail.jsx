@@ -28,7 +28,6 @@ export default function Detail() {
     loading ? <div>is loading . . .</div>
       :
       <>
-
         <div className="card">
           <div className="card-content">
             <div className="card-front">
@@ -38,16 +37,15 @@ export default function Detail() {
                 title={movie.title}
                 summary={movie.summary}
                 genres={movie.genres}
-              ></Movie>
+              />
             </div>
-            <div className="card-front">
-              <Movie
-                id={movie.id}
-                coverImg={movie.medium_cover_image}
-                title={movie.title}
-                summary={movie.summary}
-                genres={movie.genres}
-              ></Movie>
+            <div className="card-back">
+              <h2>{movie.title}</h2>
+              <p>Rating: {movie.rating}</p>
+              <p>Runtime: {movie.runtime} minutes</p>
+              <p>Year: {movie.year}</p>
+              <p>Download Count: {movie.download_count}</p>
+              <p className="description">{movie.description_full}</p>
             </div>
           </div>
         </div>

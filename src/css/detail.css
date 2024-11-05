@@ -1,5 +1,6 @@
 .card {
   width: 400px;
+  min-height: 500px;
 }
 
 .card-content {
@@ -19,12 +20,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
 }
 
 .card-front,
@@ -37,16 +41,18 @@
 .card-front {
   align-items: center;
 }
-.card-front::before {
+.card-front::before,
+.card-back::before {
   content: "";
   position: absolute;
   inset: 1rem;
-  border: 3px solid yellow;
+  border: 3px solid white;
   transform: translateZ(2rem);
+  z-index: 1;
 }
 .title {
   font-family: "Teko", sans-serif;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
   line-height: 120%;
   transform: translateZ(4.4rem);
@@ -63,12 +69,14 @@
   /* background-image: url(./back.jpg); */
   transform: rotateY(180deg);
   gap: 0.5rem;
+  text-align: justify;
+  font-size: 0.9rem;
 }
 .back-title {
   font-family: "Teko", sans-serif;
   font-size: 2.4rem;
   font-weight: 600;
-  color: yellow;
+  color: white;
   text-transform: uppercase;
   align-self: center;
   transform: translateZ(2rem);
@@ -76,13 +84,13 @@
 
 .card-back span {
   font-weight: 600;
-  color: yellow;
+  color: white;
 }
 .btn {
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 2.2rem;
-  color: yellow;
+  color: white;
   border: 2px solid white;
   border-radius: 100px;
   text-align: center;

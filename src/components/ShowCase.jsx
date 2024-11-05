@@ -7,15 +7,16 @@ export default function ShowCase() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
+    const randomPage = Math.floor(Math.random() * 10) + 1;
+
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=rating&page=${randomPage}&limit=5`
       )
     ).json();
-    setMovies(json.data.movies.slice(0, 5));
-    setLoading(false)
-    console.log(json.data.movies)
-    console.log(json.data.movies)
+
+    setMovies(json.data.movies);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -37,14 +38,12 @@ export default function ShowCase() {
         (
           <div className="container">
             {movies.map((movie) => (
-              // <Link to={`/movie/${movie.id}`} key={movie.id}>
               <div className="card"
                 key={movie.id}
                 onClick={() => handleMovieClick(movie.id)}
               >
                 <img src={movie.medium_cover_image} />
               </div>
-              // </Link>
             ))}
           </div>
         )
